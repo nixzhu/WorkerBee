@@ -9,8 +9,10 @@
 import Foundation
 
 final public class CancelableTask {
+
     public typealias Work = () -> Void
-    var work: Work?
+    private var work: Work?
+
     public init(delay time: TimeInterval, work: Work?) {
         self.work = work
         let deadline = DispatchTime.now()
@@ -19,6 +21,7 @@ final public class CancelableTask {
             self?.work?()
         }
     }
+
     public func cancel() {
         work = nil
     }
