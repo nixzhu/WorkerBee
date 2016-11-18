@@ -15,3 +15,7 @@ public func delay(_ time: TimeInterval, work: @escaping () -> Void) {
         work()
     }
 }
+
+public func doInNextRunLoop(_ work: @escaping () -> Void) {
+    delay(0, work: work)
+}

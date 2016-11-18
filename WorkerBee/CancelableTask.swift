@@ -11,9 +11,6 @@ import Foundation
 public class CancelableTask {
     public typealias Work = () -> Void
     var work: Work?
-    init(work: Work?) {
-        self.work = work
-    }
     public init(delay time: TimeInterval, work: Work?) {
         self.work = work
         let deadline = DispatchTime.now()
