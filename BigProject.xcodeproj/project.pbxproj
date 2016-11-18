@@ -21,6 +21,7 @@
 		50852E3D1DDEF48200F5EC7F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E3C1DDEF48200F5EC7F /* Functions.swift */; };
 		50852E3F1DDEF8A300F5EC7F /* FreeTimeJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */; };
 		50852E411DDF008C00F5EC7F /* SafeDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E401DDF008C00F5EC7F /* SafeDispatch.swift */; };
+		50852E431DDF030200F5EC7F /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		50852E3C1DDEF48200F5EC7F /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTimeJob.swift; sourceTree = "<group>"; };
 		50852E401DDF008C00F5EC7F /* SafeDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeDispatch.swift; sourceTree = "<group>"; };
+		50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				50852E3A1DDEF06700F5EC7F /* CancelableTask.swift */,
 				50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */,
 				50852E401DDF008C00F5EC7F /* SafeDispatch.swift */,
+				50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */,
 				50852E201DDEF04400F5EC7F /* Info.plist */,
 			);
 			path = WorkerBee;
@@ -322,6 +325,7 @@
 			files = (
 				50852E411DDF008C00F5EC7F /* SafeDispatch.swift in Sources */,
 				50852E3B1DDEF06700F5EC7F /* CancelableTask.swift in Sources */,
+				50852E431DDF030200F5EC7F /* ConcurrentOperation.swift in Sources */,
 				50852E3D1DDEF48200F5EC7F /* Functions.swift in Sources */,
 				50852E3F1DDEF8A300F5EC7F /* FreeTimeJob.swift in Sources */,
 			);
