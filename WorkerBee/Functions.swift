@@ -9,6 +9,7 @@
 import Foundation
 
 public func delay(_ time: TimeInterval, work: @escaping () -> Void) {
+    guard time > 0 else { fatalError("Only delay to the future!") }
     let deadline = DispatchTime.now()
         + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
     DispatchQueue.main.asyncAfter(deadline: deadline) {
