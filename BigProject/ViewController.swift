@@ -27,5 +27,12 @@ class ViewController: UIViewController {
         delay(2) { [weak self] in
             self?.task?.cancel()
         }
+
+        let job = FreeTimeJob(target: self, selector: #selector(hardWork))
+        job.commit()
+    }
+
+    func hardWork() {
+        // TODO: hardWork
     }
 }

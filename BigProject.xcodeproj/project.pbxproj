@@ -19,6 +19,7 @@
 		50852E331DDEF04500F5EC7F /* WorkerBee.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50852E1D1DDEF04400F5EC7F /* WorkerBee.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50852E3B1DDEF06700F5EC7F /* CancelableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E3A1DDEF06700F5EC7F /* CancelableTask.swift */; };
 		50852E3D1DDEF48200F5EC7F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E3C1DDEF48200F5EC7F /* Functions.swift */; };
+		50852E3F1DDEF8A300F5EC7F /* FreeTimeJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		50852E2E1DDEF04500F5EC7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50852E3A1DDEF06700F5EC7F /* CancelableTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelableTask.swift; sourceTree = "<group>"; };
 		50852E3C1DDEF48200F5EC7F /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeTimeJob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				50852E1F1DDEF04400F5EC7F /* WorkerBee.h */,
 				50852E3C1DDEF48200F5EC7F /* Functions.swift */,
 				50852E3A1DDEF06700F5EC7F /* CancelableTask.swift */,
+				50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */,
 				50852E201DDEF04400F5EC7F /* Info.plist */,
 			);
 			path = WorkerBee;
@@ -316,6 +319,7 @@
 			files = (
 				50852E3B1DDEF06700F5EC7F /* CancelableTask.swift in Sources */,
 				50852E3D1DDEF48200F5EC7F /* Functions.swift in Sources */,
+				50852E3F1DDEF8A300F5EC7F /* FreeTimeJob.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +584,7 @@
 				50852DF21DDEEA3900F5EC7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50852E341DDEF04500F5EC7F /* Build configuration list for PBXNativeTarget "WorkerBee" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +593,7 @@
 				50852E361DDEF04500F5EC7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50852E371DDEF04500F5EC7F /* Build configuration list for PBXNativeTarget "WorkerBeeTests" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +602,7 @@
 				50852E391DDEF04500F5EC7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

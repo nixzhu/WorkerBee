@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class CancelableTask {
+final public class CancelableTask {
     public typealias Work = () -> Void
     var work: Work?
     public init(delay time: TimeInterval, work: Work?) {
