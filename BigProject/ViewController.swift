@@ -18,6 +18,9 @@ class ViewController: UIViewController {
 
         delay(3) {
             print("Task")
+            SafeDispatch.async { [weak self] in
+                self?.view.backgroundColor = .red
+            }
         }
 
         task = CancelableTask(delay: 3) {
