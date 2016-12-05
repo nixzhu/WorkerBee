@@ -20,3 +20,9 @@ public func delay(_ time: TimeInterval, work: @escaping () -> Void) {
 public func doInNextRunLoop(_ work: @escaping () -> Void) {
     delay(0, work: work)
 }
+
+public func mutate<A>(_ value: A, change: (inout A) -> Void) -> A {
+    var copy = value
+    change(&copy)
+    return copy
+}
