@@ -12,10 +12,11 @@ import AudioToolbox.AudioServices
 final public class Feedback {
 
     private static let shared = Feedback()
+    private init() {}
+
+    // MARK: - Sound
 
     var soundIDs = [URL: SystemSoundID]()
-
-    private init() {}
 
     public class func playSound(at fileURL: URL?) {
         guard let url = fileURL else { return }
@@ -56,13 +57,15 @@ final public class Feedback {
         playSound(systemSoundID: systemSound.rawValue)
     }
 
+    // MARK: - Vibrate
+
     public class func vibrate() {
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
     }
 
-    // MARK: Taptic Notification
+    // MARK: - Taptic Notification
 
-    private var notificationFeedbackGenerator: Any?
+    private var notificationFeedbackGenerator: Any? = nil
 
     public class func prepareNotification() {
         if #available(iOS 10.0, *) {
@@ -88,9 +91,9 @@ final public class Feedback {
         }
     }
 
-    // MARK: Taptic Impact
+    // MARK: - Taptic Impact
 
-    private var impactFeedbackGenerators: [UIImpactFeedbackStyle: Any]
+    private var impactFeedbackGenerators: [UIImpactFeedbackStyle: Any] = [:]
 
     public class func prepareImpact(style: UIImpactFeedbackStyle) {
         if #available(iOS 10.0, *) {
