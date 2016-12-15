@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5067ADB51E024081001827A9 /* UITableView+WorkerBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ADB41E024081001827A9 /* UITableView+WorkerBee.swift */; };
 		50852DE21DDEEA3900F5EC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852DE11DDEEA3900F5EC7F /* AppDelegate.swift */; };
 		50852DE41DDEEA3900F5EC7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852DE31DDEEA3900F5EC7F /* ViewController.swift */; };
 		50852DE71DDEEA3900F5EC7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50852DE51DDEEA3900F5EC7F /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5067ADB41E024081001827A9 /* UITableView+WorkerBee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+WorkerBee.swift"; sourceTree = "<group>"; };
 		50852DDE1DDEEA3900F5EC7F /* BigProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50852DE11DDEEA3900F5EC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50852DE31DDEEA3900F5EC7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */,
 				50852E401DDF008C00F5EC7F /* SafeDispatch.swift */,
 				50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */,
+				5067ADB41E024081001827A9 /* UITableView+WorkerBee.swift */,
 				50852E201DDEF04400F5EC7F /* Info.plist */,
 			);
 			path = WorkerBee;
@@ -325,6 +328,7 @@
 			files = (
 				50852E411DDF008C00F5EC7F /* SafeDispatch.swift in Sources */,
 				50852E3B1DDEF06700F5EC7F /* CancelableTask.swift in Sources */,
+				5067ADB51E024081001827A9 /* UITableView+WorkerBee.swift in Sources */,
 				50852E431DDF030200F5EC7F /* ConcurrentOperation.swift in Sources */,
 				50852E3D1DDEF48200F5EC7F /* Functions.swift in Sources */,
 				50852E3F1DDEF8A300F5EC7F /* FreeTimeJob.swift in Sources */,
