@@ -1,5 +1,5 @@
 //
-//  SoundEffect.swift
+//  Feedback.swift
 //  WorkerBee
 //
 //  Created by NIX on 2016/12/15.
@@ -9,15 +9,15 @@
 import Foundation
 import AudioToolbox.AudioServices
 
-final public class SoundEffect {
+final public class Feedback {
 
-    private static let shared = SoundEffect()
+    private static let shared = Feedback()
 
     var soundIDs = [URL: SystemSoundID]()
 
     private init() {}
 
-    public class func play(fileURL: URL?) {
+    public class func playSound(at fileURL: URL?) {
         guard let url = fileURL else { return }
         if let soundID = shared.soundIDs[url] {
             AudioServicesPlaySystemSound(soundID)
@@ -31,20 +31,20 @@ final public class SoundEffect {
         }
     }
 
-    public class func play(resource name: String?, withExtension ext: String?, subdirectory subpath: String? = nil, localization localizationName: String? = nil) {
-        let fileURL = Bundle.main.url(forResource: name, withExtension: ext, subdirectory: subpath, localization: localizationName)
-        play(fileURL: fileURL)
+    public class func playSound(name: String?, extension ext: String?) {
+        let fileURL = Bundle.main.url(forResource: name, withExtension: ext)
+        playSound(at: fileURL)
     }
 
-    public class func play(fileName: String) {
+    public class func playSound(fileName: String) {
         let parts = fileName.components(separatedBy: ".")
         let name = parts.first
         let ext = parts.count > 1 ? parts[1] : nil
-        play(resource: name, withExtension: ext)
+        playSound(name: name, extension: ext)
     }
 
-    public class func play(soundID: SystemSoundID) {
-        AudioServicesPlaySystemSound(soundID)
+    public class func playSound(systemSoundID: SystemSoundID) {
+        AudioServicesPlaySystemSound(systemSoundID)
     }
 
     public enum SystemSound: SystemSoundID {
@@ -52,8 +52,8 @@ final public class SoundEffect {
         case sentMessage        = 1004
     }
 
-    public class func play(systemSound: SystemSound) {
-        play(soundID: systemSound.rawValue)
+    public class func playSound(systemSound: SystemSound) {
+        playSound(systemSoundID: systemSound.rawValue)
     }
 
     public class func vibrate() {
