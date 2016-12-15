@@ -42,4 +42,8 @@ final public class SoundEffect {
         let ext = parts.count > 1 ? parts[1] : nil
         play(resource: name, withExtension: ext)
     }
+
+    public class func play(soundID: SystemSoundID) {
+        AudioServicesPlaySystemSound(soundID)
+    }
 }
