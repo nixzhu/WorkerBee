@@ -30,4 +30,16 @@ final public class SoundEffect {
             }
         }
     }
+
+    public class func play(resource name: String?, withExtension ext: String?, subdirectory subpath: String? = nil, localization localizationName: String? = nil) {
+        let fileURL = Bundle.main.url(forResource: name, withExtension: ext, subdirectory: subpath, localization: localizationName)
+        play(fileURL: fileURL)
+    }
+
+    public class func play(fileName: String) {
+        let parts = fileName.components(separatedBy: ".")
+        let name = parts.first
+        let ext = parts.count > 1 ? parts[1] : nil
+        play(resource: name, withExtension: ext)
+    }
 }
