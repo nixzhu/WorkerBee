@@ -46,4 +46,17 @@ final public class SoundEffect {
     public class func play(soundID: SystemSoundID) {
         AudioServicesPlaySystemSound(soundID)
     }
+
+    public enum SystemSound: SystemSoundID {
+        case receivedMessage    = 1003
+        case sentMessage        = 1004
+    }
+
+    public class func play(systemSound: SystemSound) {
+        play(soundID: systemSound.rawValue)
+    }
+
+    public class func vibrate() {
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+    }
 }
