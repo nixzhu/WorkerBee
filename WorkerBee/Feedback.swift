@@ -6,7 +6,7 @@
 //  Copyright © 2016年 nixWork. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import AudioToolbox.AudioServices
 
 final public class Feedback {
@@ -58,5 +58,33 @@ final public class Feedback {
 
     public class func vibrate() {
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+    }
+
+    // MARK: Taptic Notification
+
+    private var notificationFeedbackGenerator: Any?
+
+    public class func prepareNotification() {
+        if #available(iOS 10.0, *) {
+            if let generator = shared.notificationFeedbackGenerator as? UINotificationFeedbackGenerator {
+                generator.prepare()
+            } else {
+                let generator = UINotificationFeedbackGenerator()
+                generator.prepare()
+                shared.notificationFeedbackGenerator = generator
+            }
+        }
+    }
+
+    public class func fireNotification(type: UINotificationFeedbackType) {
+        if #available(iOS 10.0, *) {
+            if let generator = shared.notificationFeedbackGenerator as? UINotificationFeedbackGenerator {
+                generator.notificationOccurred(type)
+            } else {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(type)
+                shared.notificationFeedbackGenerator = generator
+            }
+        }
     }
 }
