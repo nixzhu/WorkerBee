@@ -16,13 +16,13 @@ Swift 3, iOS 8
 ### Carthage
 
 ```ogdl
-github "nixzhu/WorkerBee" >= 0.1.0
+github "nixzhu/WorkerBee"
 ```
 
 ### CocoaPods
 
 ```ruby
-pod 'WorkerBee', '~> 0.1.0'
+pod 'WorkerBee'
 ```
 
 ## Contact

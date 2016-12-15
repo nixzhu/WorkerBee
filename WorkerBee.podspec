@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name        = "WorkerBee"
-  s.version     = "0.1.0"
+  s.version     = "0.1.1"
   s.summary     = "WorkerBee is a toolkit"
 
   s.description = <<-DESC
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.authors           = { "nixzhu" => "zhuhongxu@gmail.com" }
   s.social_media_url  = "https://twitter.com/nixzhu"
 
-  s.ios.deployment_target   = "9.0"
+  s.ios.deployment_target   = "8.0"
 
   s.source          = { :git => "https://github.com/nixzhu/WorkerBee.git", :tag => s.version }
   s.source_files    = "WorkerBee/*.swift"

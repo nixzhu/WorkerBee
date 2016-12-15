@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UITableView {
+public extension UITableView {
 
-    func workerbee_scrollToRow(at indexPath: IndexPath, at scrollPosition: UITableViewScrollPosition, animated: Bool) {
+    public func workerbee_scrollToRow(at indexPath: IndexPath, at scrollPosition: UITableViewScrollPosition, animated: Bool) {
         guard numberOfSections > indexPath.section else { return }
         guard numberOfRows(inSection: indexPath.section) > indexPath.row else { return }
         scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
