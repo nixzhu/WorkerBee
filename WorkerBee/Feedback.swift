@@ -69,24 +69,28 @@ final public class Feedback {
 
     public class func prepareNotification() {
         if #available(iOS 10.0, *) {
-            if let generator = shared.notificationFeedbackGenerator as? UINotificationFeedbackGenerator {
-                generator.prepare()
-            } else {
-                let generator = UINotificationFeedbackGenerator()
-                generator.prepare()
-                shared.notificationFeedbackGenerator = generator
+            DispatchQueue.main.async {
+                if let generator = shared.notificationFeedbackGenerator as? UINotificationFeedbackGenerator {
+                    generator.prepare()
+                } else {
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.prepare()
+                    shared.notificationFeedbackGenerator = generator
+                }
             }
         }
     }
 
     public class func fireNotification(type: UINotificationFeedbackType) {
         if #available(iOS 10.0, *) {
-            if let generator = shared.notificationFeedbackGenerator as? UINotificationFeedbackGenerator {
-                generator.notificationOccurred(type)
-            } else {
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(type)
-                shared.notificationFeedbackGenerator = generator
+            DispatchQueue.main.async {
+                if let generator = shared.notificationFeedbackGenerator as? UINotificationFeedbackGenerator {
+                    generator.notificationOccurred(type)
+                } else {
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(type)
+                    shared.notificationFeedbackGenerator = generator
+                }
             }
         }
     }
@@ -97,24 +101,28 @@ final public class Feedback {
 
     public class func prepareImpact(style: UIImpactFeedbackStyle) {
         if #available(iOS 10.0, *) {
-            if let generator = shared.impactFeedbackGenerators[style] as? UIImpactFeedbackGenerator {
-                generator.prepare()
-            } else {
-                let generator = UIImpactFeedbackGenerator(style: style)
-                generator.prepare()
-                shared.impactFeedbackGenerators[style] = generator
+            DispatchQueue.main.async {
+                if let generator = shared.impactFeedbackGenerators[style] as? UIImpactFeedbackGenerator {
+                    generator.prepare()
+                } else {
+                    let generator = UIImpactFeedbackGenerator(style: style)
+                    generator.prepare()
+                    shared.impactFeedbackGenerators[style] = generator
+                }
             }
         }
     }
 
     public class func fireImpact(style: UIImpactFeedbackStyle) {
         if #available(iOS 10.0, *) {
-            if let generator = shared.impactFeedbackGenerators[style] as? UIImpactFeedbackGenerator {
-                generator.impactOccurred()
-            } else {
-                let generator = UIImpactFeedbackGenerator(style: style)
-                generator.impactOccurred()
-                shared.impactFeedbackGenerators[style] = generator
+            DispatchQueue.main.async {
+                if let generator = shared.impactFeedbackGenerators[style] as? UIImpactFeedbackGenerator {
+                    generator.impactOccurred()
+                } else {
+                    let generator = UIImpactFeedbackGenerator(style: style)
+                    generator.impactOccurred()
+                    shared.impactFeedbackGenerators[style] = generator
+                }
             }
         }
     }
