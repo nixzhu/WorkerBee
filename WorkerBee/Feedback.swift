@@ -87,4 +87,32 @@ final public class Feedback {
             }
         }
     }
+
+    // MARK: Taptic Impact
+
+    private var impactFeedbackGenerators: [UIImpactFeedbackStyle: Any]
+
+    public class func prepareImpact(style: UIImpactFeedbackStyle) {
+        if #available(iOS 10.0, *) {
+            if let generator = shared.impactFeedbackGenerators[style] as? UIImpactFeedbackGenerator {
+                generator.prepare()
+            } else {
+                let generator = UIImpactFeedbackGenerator(style: style)
+                generator.prepare()
+                shared.impactFeedbackGenerators[style] = generator
+            }
+        }
+    }
+
+    public class func fireImpact(style: UIImpactFeedbackStyle) {
+        if #available(iOS 10.0, *) {
+            if let generator = shared.impactFeedbackGenerators[style] as? UIImpactFeedbackGenerator {
+                generator.impactOccurred()
+            } else {
+                let generator = UIImpactFeedbackGenerator(style: style)
+                generator.impactOccurred()
+                shared.impactFeedbackGenerators[style] = generator
+            }
+        }
+    }
 }
