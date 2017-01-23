@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        delay(3) {
+        Function.delay(3) {
             print("Task")
             SafeDispatch.async { [weak self] in
                 self?.view.backgroundColor = .red
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
             print("CancelableTask")
         }
 
-        delay(2) { [weak self] in
+        Function.delay(2) { [weak self] in
             self?.task?.cancel()
         }
 
