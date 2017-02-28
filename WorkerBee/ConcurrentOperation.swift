@@ -10,7 +10,7 @@ import Foundation
 
 open class ConcurrentOperation: Operation {
 
-    enum State: String {
+    public enum State: String {
         case ready, executing, finished
 
         fileprivate var keyPath: String {
@@ -18,7 +18,7 @@ open class ConcurrentOperation: Operation {
         }
     }
 
-    var state: State = .ready {
+    open var state: State = .ready {
         willSet {
             willChangeValue(forKey: newValue.keyPath)
             willChangeValue(forKey: state.keyPath)
