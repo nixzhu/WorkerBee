@@ -66,12 +66,12 @@ public struct TextSize {
         return height
     }
 
-    public static func width(text: String, font: UIFont, height: CGFloat, insets: UIEdgeInsets = .zero) -> CGFloat {
-        let key = FixedHeightCacheEntry(text: text, font: font, height: height, insets: insets)
+    public static func width(text: String, font: UIFont, insets: UIEdgeInsets = .zero) -> CGFloat {
+        let key = FixedHeightCacheEntry(text: text, font: font, height: 0, insets: insets)
         if let hit = fixedHeightCache[key] {
             return hit
         }
-        let constrainedSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height - insets.top - insets.bottom)
+        let constrainedSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 0)
         let attributes = [NSFontAttributeName: font]
         let options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
         let bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)

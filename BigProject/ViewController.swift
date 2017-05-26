@@ -37,6 +37,32 @@ class ViewController: UIViewController {
         operate { value in
             print("or: value: \(value)")
         }
+
+        do {
+            let text = "Do not go gentle into that good night"
+            let font = UIFont.systemFont(ofSize: 36)
+            let width: CGFloat = 200
+            let height = TextSize.height(text: text, font: font, width: width)
+            let label = UILabel(frame: CGRect(x: 20, y: 100, width: width, height: height))
+            label.font = font
+            label.numberOfLines = 0
+            label.backgroundColor = .green
+            label.text = text
+            view.addSubview(label)
+        }
+
+        do {
+            let text = "Do not go gentle into that good night"
+            let font = UIFont.systemFont(ofSize: 17)
+            let height: CGFloat = 30
+            let width = TextSize.width(text: text, font: font, insets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
+            let label = UILabel(frame: CGRect(x: 20, y: 300, width: width, height: height))
+            label.font = font
+            label.textAlignment = .center
+            label.backgroundColor = .blue
+            label.text = text
+            view.addSubview(label)
+        }
     }
 
     func hardWork() {
