@@ -28,15 +28,14 @@ public struct TextSize {
     private struct FixedHeightCacheEntry: Hashable {
         let text: String
         let font: UIFont
-        let height: CGFloat
         let insets: UIEdgeInsets
 
         var hashValue: Int {
-            return text.hashValue ^ font.hashValue ^ Int(height) ^ Int(insets.top) ^ Int(insets.left) ^ Int(insets.bottom) ^ Int(insets.right)
+            return text.hashValue ^ font.hashValue ^ Int(insets.top) ^ Int(insets.left) ^ Int(insets.bottom) ^ Int(insets.right)
         }
 
         static func ==(lhs: FixedHeightCacheEntry, rhs: FixedHeightCacheEntry) -> Bool {
-            return lhs.height == rhs.height && lhs.insets == rhs.insets && lhs.text == rhs.text && lhs.font == rhs.font
+            return lhs.insets == rhs.insets && lhs.text == rhs.text && lhs.font == rhs.font
         }
     }
 
@@ -67,7 +66,7 @@ public struct TextSize {
     }
 
     public static func width(text: String, font: UIFont, insets: UIEdgeInsets = .zero) -> CGFloat {
-        let key = FixedHeightCacheEntry(text: text, font: font, height: 0, insets: insets)
+        let key = FixedHeightCacheEntry(text: text, font: font, insets: insets)
         if let hit = fixedHeightCache[key] {
             return hit
         }

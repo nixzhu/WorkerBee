@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         }
 
         do {
-            let text = "Do not go gentle into that good night"
+            let text = "Do not go gentle into that good night."
             let font = UIFont.systemFont(ofSize: 36)
             let width: CGFloat = 200
             let height = TextSize.height(text: text, font: font, width: width)
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         }
 
         do {
-            let text = "Do not go gentle into that good night"
+            let text = "Do not go gentle into that good night."
             let font = UIFont.systemFont(ofSize: 17)
             let height: CGFloat = 30
             let width = TextSize.width(text: text, font: font, insets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
