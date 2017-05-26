@@ -10,7 +10,7 @@ import UIKit
 
 public struct TextSize {
 
-    private struct CacheEntry: Hashable {
+    private struct FixedWidthCacheEntry: Hashable {
         let text: String
         let font: UIFont
         let width: CGFloat
@@ -20,12 +20,12 @@ public struct TextSize {
             return text.hashValue ^ font.hashValue ^ Int(width) ^ Int(insets.top) ^ Int(insets.left) ^ Int(insets.bottom) ^ Int(insets.right)
         }
 
-        static func ==(lhs: CacheEntry, rhs: CacheEntry) -> Bool {
+        static func ==(lhs: FixedWidthCacheEntry, rhs: FixedWidthCacheEntry) -> Bool {
             return lhs.width == rhs.width && lhs.insets == rhs.insets && lhs.text == rhs.text && lhs.font == rhs.font
         }
     }
 
-    private struct CacheEntry2: Hashable {
+    private struct FixedHeightCacheEntry: Hashable {
         let text: String
         let font: UIFont
         let height: CGFloat
@@ -35,50 +35,48 @@ public struct TextSize {
             return text.hashValue ^ font.hashValue ^ Int(height) ^ Int(insets.top) ^ Int(insets.left) ^ Int(insets.bottom) ^ Int(insets.right)
         }
 
-        static func ==(lhs: CacheEntry2, rhs: CacheEntry2) -> Bool {
+        static func ==(lhs: FixedHeightCacheEntry, rhs: FixedHeightCacheEntry) -> Bool {
             return lhs.height == rhs.height && lhs.insets == rhs.insets && lhs.text == rhs.text && lhs.font == rhs.font
         }
     }
 
-    private static var cache = [CacheEntry: CGRect]() {
+    private static var fixedWidthCache = [FixedWidthCacheEntry: CGFloat]() {
         didSet {
             assert(Thread.isMainThread)
         }
     }
 
-    private static var cache2 = [CacheEntry2: CGRect]() {
+    private static var fixedHeightCache = [FixedHeightCacheEntry: CGFloat]() {
         didSet {
             assert(Thread.isMainThread)
         }
     }
 
-    public static func size(text: String, font: UIFont, width: CGFloat, insets: UIEdgeInsets = .zero) -> CGSize {
-        let key = CacheEntry(text: text, font: font, width: width, insets: insets)
-        if let hit = cache[key] {
-            return hit.size
+    public static func height(text: String, font: UIFont, width: CGFloat, insets: UIEdgeInsets = .zero) -> CGFloat {
+        let key = FixedWidthCacheEntry(text: text, font: font, width: width, insets: insets)
+        if let hit = fixedWidthCache[key] {
+            return hit
         }
         let constrainedSize = CGSize(width: width - insets.left - insets.right, height: CGFloat.greatestFiniteMagnitude)
         let attributes = [NSFontAttributeName: font]
         let options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
-        var bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
-        bounds.size.width = width
-        bounds.size.height = ceil(bounds.height + insets.top + insets.bottom)
-        cache[key] = bounds
-        return bounds.size
+        let bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
+        let height = ceil(bounds.height + insets.top + insets.bottom)
+        fixedWidthCache[key] = height
+        return height
     }
 
-    public static func size(text: String, font: UIFont, height: CGFloat, insets: UIEdgeInsets = .zero) -> CGSize {
-        let key = CacheEntry2(text: text, font: font, height: height, insets: insets)
-        if let hit = cache2[key] {
-            return hit.size
+    public static func width(text: String, font: UIFont, height: CGFloat, insets: UIEdgeInsets = .zero) -> CGFloat {
+        let key = FixedHeightCacheEntry(text: text, font: font, height: height, insets: insets)
+        if let hit = fixedHeightCache[key] {
+            return hit
         }
         let constrainedSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height - insets.top - insets.bottom)
         let attributes = [NSFontAttributeName: font]
         let options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
-        var bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
-        bounds.size.width = ceil(bounds.width + insets.left + insets.right)
-        bounds.size.height = height
-        cache2[key] = bounds
-        return bounds.size
+        let bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
+        let width = ceil(bounds.width + insets.left + insets.right)
+        fixedHeightCache[key] = width
+        return width
     }
 }
