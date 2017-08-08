@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func hardWork() {
+    @objc func hardWork() {
         // TODO: hardWork
     }
 

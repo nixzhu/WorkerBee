@@ -57,7 +57,7 @@ public struct TextSize {
             return hit
         }
         let constrainedSize = CGSize(width: width - insets.left - insets.right, height: CGFloat.greatestFiniteMagnitude)
-        let attributes = [NSFontAttributeName: font]
+        let attributes = [NSAttributedStringKey.font: font]
         let options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
         let bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
         let height = ceil(bounds.height + insets.top + insets.bottom)
@@ -71,7 +71,7 @@ public struct TextSize {
             return hit
         }
         let constrainedSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 0)
-        let attributes = [NSFontAttributeName: font]
+        let attributes = [NSAttributedStringKey.font: font]
         let options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
         let bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
         let width = ceil(bounds.width + insets.left + insets.right)
