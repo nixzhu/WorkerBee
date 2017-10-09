@@ -10,19 +10,16 @@ import Foundation
 
 final public class CancelableTask {
 
-    public typealias Work = () -> Void
-    private var work: Work?
+    private var workItem: DispatchWorkItem?
 
-    public init(delay time: TimeInterval, work: Work?) {
-        self.work = work
-        let deadline = DispatchTime.now()
-            + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: deadline) { [weak self] in
-            self?.work?()
-        }
+    public init(delay time: TimeInterval, work: @escaping () -> Void) {
+        let workItem = DispatchWorkItem(block: work)
+        self.workItem = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: workItem)
     }
 
     public func cancel() {
-        work = nil
+        workItem?.cancel()
+        workItem = nil
     }
 }
