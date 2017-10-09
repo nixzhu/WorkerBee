@@ -9,7 +9,9 @@ WorkerBee is a toolkit.
 
 ## Requirements
 
-Swift 3, iOS 8
+Swift 4, iOS 8
+
+(Swift 3, use version 0.5.0)
 
 ## Installation
 
