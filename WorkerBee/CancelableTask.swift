@@ -13,6 +13,7 @@ final public class CancelableTask {
     private var workItem: DispatchWorkItem?
 
     public init(delay time: TimeInterval, work: @escaping () -> Void) {
+        guard time >= 0 else { fatalError("Only delay to the future!") }
         let workItem = DispatchWorkItem(block: work)
         self.workItem = workItem
         DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: workItem)

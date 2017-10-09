@@ -155,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				50852E1F1DDEF04400F5EC7F /* WorkerBee.h */,
-				50852E3C1DDEF48200F5EC7F /* Functions.swift */,
 				50852E3A1DDEF06700F5EC7F /* CancelableTask.swift */,
+				50852E3C1DDEF48200F5EC7F /* Functions.swift */,
 				50852E3E1DDEF8A300F5EC7F /* FreeTimeJob.swift */,
 				50852E401DDF008C00F5EC7F /* SafeDispatch.swift */,
 				50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */,
