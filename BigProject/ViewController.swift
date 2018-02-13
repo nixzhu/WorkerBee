@@ -126,12 +126,15 @@ struct ShowCircleDeepLink: DeepLink {
         .term("share.quanziapp.com")
         .term("circle")
         .string(named: "circleIdentifier")
+        .queryStringParameter(.optionalString(named: "from"))
 
     init(values: DeepLinkValues) {
         self.circleIdentifier = values.path["circleIdentifier"] as! String
+        self.from = values.query["from"] as? String
     }
 
     let circleIdentifier: String
+    let from: String?
 }
 
 struct AppStoreAppDeepLink: DeepLink {

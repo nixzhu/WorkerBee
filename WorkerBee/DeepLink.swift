@@ -76,6 +76,10 @@ extension DeepLinkTemplate {
         return DeepLinkTemplate(pathParts: pathParts, parameters: self.parameters.union(parameters))
     }
 
+    public func queryStringParameter(_ parameter: QueryStringParameter) -> DeepLinkTemplate {
+        return queryStringParameters([parameter])
+    }
+
     private func appending(pathPart: PathPart) -> DeepLinkTemplate {
         return DeepLinkTemplate(pathParts: pathParts + [pathPart], parameters: parameters)
     }
