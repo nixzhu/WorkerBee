@@ -63,6 +63,33 @@ class ViewController: UIViewController {
             label.text = text
             view.addSubview(label)
         }
+
+        let deepLinkRecognizer = DeepLinkRecognizer(
+            deepLinkTypes: [
+                ShowCircleDeepLink.self,
+                AppStoreAppDeepLink.self
+            ]
+        )
+        let urls: [URL] = [
+            URL(string: "https://share.quanziapp.com/circle/sVBgoaB")!,
+            URL(string: "https://itunes.apple.com/cn/app/apple-store/id375380948?pt=2003&ct=footer&mt=8")!,
+            URL(string: "https://itunes.apple.com/cn/app/apple-store/id375380948?pt=2003")!,
+            URL(string: "https://google.com")!
+        ]
+        urls.forEach { url in
+            if let deepLink = deepLinkRecognizer.deepLink(matching: url) {
+                switch deepLink {
+                case let showCircleDeepLink as ShowCircleDeepLink:
+                    print("showCircleDeepLink", showCircleDeepLink)
+                case let appStoreAppDeepLink as AppStoreAppDeepLink:
+                    print("appStoreAppDeepLink", appStoreAppDeepLink)
+                default:
+                    print("url", url)
+                }
+            } else {
+                print("url", url)
+            }
+        }
     }
 
     @objc func hardWork() {
@@ -91,4 +118,45 @@ class ViewController: UIViewController {
             work(value)
         }
     }
+}
+
+struct ShowCircleDeepLink: DeepLink {
+
+    static let template = DeepLinkTemplate()
+        .term("share.quanziapp.com")
+        .term("circle")
+        .string(named: "circleIdentifier")
+
+    init(values: DeepLinkValues) {
+        self.circleIdentifier = values.path["circleIdentifier"] as! String
+    }
+
+    let circleIdentifier: String
+}
+
+struct AppStoreAppDeepLink: DeepLink {
+
+    static let template = DeepLinkTemplate()
+        .term("itunes.apple.com")
+        .term("cn")
+        .term("app")
+        .term("apple-store")
+        .string(named: "id")
+        .queryStringParameters([
+            .requiredInt(named: "pt"),
+            .optionalString(named: "ct"),
+            .optionalInt(named: "mt")
+            ])
+
+    init(values: DeepLinkValues) {
+        self.id = values.path["id"] as! String
+        self.pt = values.query["pt"] as! Int
+        self.ct = values.query["ct"] as? String
+        self.mt = values.query["mt"] as? Int
+    }
+
+    let id: String
+    let pt: Int
+    let ct: String?
+    let mt: Int?
 }
