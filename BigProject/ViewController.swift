@@ -13,6 +13,10 @@ class ViewController: UIViewController {
 
     var task: CancelableTask?
 
+    let schedule = Schedule {
+        print("schedule work", Date().timeIntervalSince1970)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,6 +94,8 @@ class ViewController: UIViewController {
                 print("url", url)
             }
         }
+
+        schedule.start(timeInterval: .seconds(1), repeats: true)
     }
 
     @objc func hardWork() {

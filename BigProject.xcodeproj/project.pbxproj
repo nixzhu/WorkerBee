@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50017F272045293D00A0B46E /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50017F262045293D00A0B46E /* Schedule.swift */; };
 		501C12A71E30AD6800E5A52D /* OperatingRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501C12A61E30AD6800E5A52D /* OperatingRoom.swift */; };
 		5067ADB51E024081001827A9 /* UITableView+WorkerBee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ADB41E024081001827A9 /* UITableView+WorkerBee.swift */; };
 		5067ADB71E027230001827A9 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ADB61E027230001827A9 /* Feedback.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		50017F262045293D00A0B46E /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		501C12A61E30AD6800E5A52D /* OperatingRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatingRoom.swift; sourceTree = "<group>"; };
 		5067ADB41E024081001827A9 /* UITableView+WorkerBee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+WorkerBee.swift"; sourceTree = "<group>"; };
 		5067ADB61E027230001827A9 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				501C12A61E30AD6800E5A52D /* OperatingRoom.swift */,
 				5083BE401ED8234C00CAA21E /* TextSize.swift */,
 				50871ADF2032A5500015B31E /* DeepLink.swift */,
+				50017F262045293D00A0B46E /* Schedule.swift */,
 				50852E201DDEF04400F5EC7F /* Info.plist */,
 			);
 			path = WorkerBee;
@@ -344,6 +347,7 @@
 				5067ADB51E024081001827A9 /* UITableView+WorkerBee.swift in Sources */,
 				50871AE02032A5500015B31E /* DeepLink.swift in Sources */,
 				5067ADB71E027230001827A9 /* Feedback.swift in Sources */,
+				50017F272045293D00A0B46E /* Schedule.swift in Sources */,
 				501C12A71E30AD6800E5A52D /* OperatingRoom.swift in Sources */,
 				50852E431DDF030200F5EC7F /* ConcurrentOperation.swift in Sources */,
 				50852E3D1DDEF48200F5EC7F /* Functions.swift in Sources */,
