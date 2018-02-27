@@ -34,4 +34,9 @@ public class Schedule {
         timer.resume()
         _timer = timer
     }
+
+    public func cancel() {
+        _timer?.cancel()
+        _timer = nil
+    }
 }

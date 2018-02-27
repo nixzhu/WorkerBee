@@ -96,6 +96,9 @@ class ViewController: UIViewController {
         }
 
         schedule.start(timeInterval: .seconds(1), repeats: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.schedule.cancel()
+        }
     }
 
     @objc func hardWork() {
