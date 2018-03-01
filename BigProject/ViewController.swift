@@ -132,7 +132,7 @@ class ViewController: UIViewController {
 struct ShowCircleDeepLink: DeepLink {
 
     static let template = DeepLinkTemplate()
-        .term("share.quanziapp.com")
+        .host("share.quanziapp.com")
         .term("circle")
         .string(named: "circleIdentifier")
         .queryStringParameter(.optionalString(named: "from"))
@@ -149,7 +149,7 @@ struct ShowCircleDeepLink: DeepLink {
 struct AppStoreAppDeepLink: DeepLink {
 
     static let template = DeepLinkTemplate()
-        .term("itunes.apple.com")
+        .host("itunes.apple.com")
         .term("cn")
         .term("app")
         .term("apple-store")

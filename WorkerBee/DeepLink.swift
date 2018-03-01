@@ -19,6 +19,7 @@ public protocol DeepLink {
 public struct DeepLinkTemplate {
 
     fileprivate enum PathPart {
+        case host(caseInsensitiveSymbol: String)
         case term(symbol: String)
         case string(name: String)
         case int(name: String)
@@ -50,6 +51,10 @@ extension DeepLinkTemplate {
 
     public init() {
         self.init(pathParts: [], parameters: [])
+    }
+
+    public func host(_ caseInsensitiveSymbol: String) -> DeepLinkTemplate {
+        return appending(pathPart: .host(caseInsensitiveSymbol: caseInsensitiveSymbol))
     }
 
     public func term(_ symbol: String) -> DeepLinkTemplate {
@@ -117,10 +122,10 @@ extension DeepLinkTemplate.QueryStringParameter: Hashable {
 
     fileprivate var type: ParameterType {
         switch self {
-        case .requiredInt,    .optionalInt:    return .int
-        case .requiredBool,   .optionalBool:   return .bool
-        case .requiredDouble, .optionalDouble: return .double
         case .requiredString, .optionalString: return .string
+        case .requiredInt,    .optionalInt:    return .int
+        case .requiredDouble, .optionalDouble: return .double
+        case .requiredBool,   .optionalBool:   return .bool
         }
     }
 
@@ -182,19 +187,21 @@ public struct DeepLinkRecognizer {
         var values = [String: Any]()
         for (pathPart, component) in zip(template.pathParts, components) {
             switch pathPart {
+            case let .host(caseInsensitiveSymbol):
+                guard caseInsensitiveSymbol.lowercased() == component.lowercased() else { return nil }
+            case let .term(symbol):
+                guard symbol == component else { return nil }
+            case let .string(name):
+                values[name] = component
             case let .int(name):
                 guard let value = Int(component) else { return nil }
-                values[name] = value
-            case let .bool(name):
-                guard let value = Bool(component) else { return nil }
                 values[name] = value
             case let .double(name):
                 guard let value = Double(component) else { return nil }
                 values[name] = value
-            case let .string(name):
-                values[name] = component
-            case let .term(symbol):
-                guard symbol == component else { return nil }
+            case let .bool(name):
+                guard let value = Bool(component) else { return nil }
+                values[name] = value
             }
         }
         return values
@@ -235,10 +242,10 @@ public struct DeepLinkRecognizer {
     private static func value(of parameter: DeepLinkTemplate.QueryStringParameter, in queryMap: QueryMap) -> Any? {
         guard let value: String = queryMap[parameter.name] else { return nil }
         switch parameter.type {
-        case .int:    return Int(value)
-        case .bool:   return Bool(value)
-        case .double: return Double(value)
         case .string: return value.removingPercentEncoding ?? ""
+        case .int:    return Int(value)
+        case .double: return Double(value)
+        case .bool:   return Bool(value)
         }
     }
 }
