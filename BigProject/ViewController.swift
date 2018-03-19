@@ -99,6 +99,11 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.schedule.cancel()
         }
+
+        do {
+            let s = [0, 1, 2].workerbee_concurrentMap({ String($0) })
+            assert(s == ["0", "1", "2"])
+        }
     }
 
     @objc func hardWork() {
