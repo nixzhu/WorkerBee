@@ -75,6 +75,7 @@ class ViewController: UIViewController {
             ]
         )
         let urls: [URL] = [
+            URL(string: "https://quanziapp.com/circle/sVBgoaB_")!,
             URL(string: "https://share.quanziapp.com/circle/sVBgoaB")!,
             URL(string: "https://itunes.apple.com/cn/app/apple-store/id375380948?pt=2003&ct=footer&mt=8")!,
             URL(string: "https://itunes.apple.com/cn/app/apple-store/id375380948?pt=2003")!,
@@ -137,7 +138,7 @@ class ViewController: UIViewController {
 struct ShowCircleDeepLink: DeepLink {
 
     static let template = DeepLinkTemplate()
-        .host("share.quanziapp.com")
+        .hosts(["quanziapp.com", "share.quanziapp.com"])
         .term("circle")
         .string(named: "circleIdentifier")
         .queryStringParameter(.optionalString(named: "from"))

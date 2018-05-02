@@ -19,7 +19,7 @@ public protocol DeepLink {
 public struct DeepLinkTemplate {
 
     fileprivate enum PathPart {
-        case host(caseInsensitiveSymbol: String)
+        case hosts(caseInsensitiveSymbols: [String])
         case term(symbol: String)
         case string(name: String)
         case int(name: String)
@@ -53,8 +53,12 @@ extension DeepLinkTemplate {
         self.init(pathParts: [], parameters: [])
     }
 
+    public func hosts(_ caseInsensitiveSymbols: [String]) -> DeepLinkTemplate {
+        return appending(pathPart: .hosts(caseInsensitiveSymbols: caseInsensitiveSymbols))
+    }
+
     public func host(_ caseInsensitiveSymbol: String) -> DeepLinkTemplate {
-        return appending(pathPart: .host(caseInsensitiveSymbol: caseInsensitiveSymbol))
+        return appending(pathPart: .hosts(caseInsensitiveSymbols: [caseInsensitiveSymbol]))
     }
 
     public func term(_ symbol: String) -> DeepLinkTemplate {
@@ -187,8 +191,8 @@ public struct DeepLinkRecognizer {
         var values = [String: Any]()
         for (pathPart, component) in zip(template.pathParts, components) {
             switch pathPart {
-            case let .host(caseInsensitiveSymbol):
-                guard caseInsensitiveSymbol.lowercased() == component.lowercased() else { return nil }
+            case let .hosts(caseInsensitiveSymbols):
+                guard caseInsensitiveSymbols.map({ $0.lowercased() }).contains(component.lowercased()) else { return nil }
             case let .term(symbol):
                 guard symbol == component else { return nil }
             case let .string(name):
