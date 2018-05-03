@@ -139,8 +139,14 @@ class ViewController: UIViewController {
 
     func testKeychain() {
         let key = "idfa"
-        let currentIDFA = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-
+        var _currentIDFA: String?
+        if ASIdentifierManager.shared().isAdvertisingTrackingEnabled {
+            _currentIDFA = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        }
+        guard let currentIDFA = _currentIDFA else {
+            assertionFailure("Can not get IDFA!")
+            return
+        }
         func readOrSaveIDFA() throws -> String {
             do {
                 let data = try Keychain.shared.read(key: key)
