@@ -139,20 +139,29 @@ class ViewController: UIViewController {
 
     func testKeychain() {
         let key = "idfa"
-        let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-        print("New idfa", idfa)
-        do {
-            let data = idfa.data(using: .utf8)!
-            try Keychain.shared.save(key: key, data: data)
-        } catch {
-            print("Keychain save", error)
+        let currentIDFA = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+
+        func readOrSaveIDFA() throws -> String {
+            do {
+                let data = try Keychain.shared.read(key: key)
+                let idfa = String(data: data, encoding: .utf8) ?? ""
+                return idfa
+            } catch {
+                do {
+                    let data = currentIDFA.data(using: .utf8)!
+                    try Keychain.shared.save(key: key, data: data)
+                    return currentIDFA
+                } catch {
+                    throw error
+                }
+            }
         }
+
         do {
-            let data = try Keychain.shared.read(key: key)
-            let idfa = String(data: data, encoding: .utf8) ?? ""
-            print("Old idfa", idfa)
+            let initialIDFA = try readOrSaveIDFA()
+            print("initialIDFA", initialIDFA)
         } catch {
-            print("Keychain read", error)
+            print("Keychain error", error)
         }
     }
 }
