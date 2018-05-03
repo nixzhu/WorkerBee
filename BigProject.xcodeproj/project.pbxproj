@@ -30,6 +30,7 @@
 		50852E411DDF008C00F5EC7F /* SafeDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E401DDF008C00F5EC7F /* SafeDispatch.swift */; };
 		50852E431DDF030200F5EC7F /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */; };
 		50871AE02032A5500015B31E /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50871ADF2032A5500015B31E /* DeepLink.swift */; };
+		50F6CEB2209AA39600DB0F5E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CEB1209AA39600DB0F5E /* Keychain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		50852E401DDF008C00F5EC7F /* SafeDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeDispatch.swift; sourceTree = "<group>"; };
 		50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		50871ADF2032A5500015B31E /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		50F6CEB1209AA39600DB0F5E /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				50017F262045293D00A0B46E /* Schedule.swift */,
 				5026BDF2205FBEB200A946B7 /* ThreadSafe.swift */,
 				5026BDF4205FBF0D00A946B7 /* Array+WorkerBee.swift */,
+				50F6CEB1209AA39600DB0F5E /* Keychain.swift */,
 				50852E201DDEF04400F5EC7F /* Info.plist */,
 			);
 			path = WorkerBee;
@@ -360,6 +363,7 @@
 				50852E3D1DDEF48200F5EC7F /* Functions.swift in Sources */,
 				5026BDF3205FBEB200A946B7 /* ThreadSafe.swift in Sources */,
 				50852E3F1DDEF8A300F5EC7F /* FreeTimeJob.swift in Sources */,
+				50F6CEB2209AA39600DB0F5E /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

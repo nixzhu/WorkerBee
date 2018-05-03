@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AdSupport
 import WorkerBee
 
 class ViewController: UIViewController {
@@ -105,6 +106,8 @@ class ViewController: UIViewController {
             let s = [0, 1, 2].workerbee_concurrentMap({ String($0) })
             assert(s == ["0", "1", "2"])
         }
+
+        testKeychain()
     }
 
     @objc func hardWork() {
@@ -131,6 +134,25 @@ class ViewController: UIViewController {
         or.ready {
             print("or: go go go")
             work(value)
+        }
+    }
+
+    func testKeychain() {
+        let key = "idfa"
+        let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        print("New idfa", idfa)
+        do {
+            let data = idfa.data(using: .utf8)!
+            try Keychain.shared.save(key: key, data: data)
+        } catch {
+            print("Keychain save", error)
+        }
+        do {
+            let data = try Keychain.shared.read(key: key)
+            let idfa = String(data: data, encoding: .utf8) ?? ""
+            print("Old idfa", idfa)
+        } catch {
+            print("Keychain read", error)
         }
     }
 }
