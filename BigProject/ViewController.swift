@@ -108,6 +108,15 @@ class ViewController: UIViewController {
         }
 
         testKeychain()
+
+        let touchableButton = TouchableButton(frame: CGRect(x: 100, y: 500, width: 10, height: 10))
+        touchableButton.backgroundColor = .green
+        touchableButton.addTarget(self, action: #selector(touchTouchableButton), for: .touchUpInside)
+        view.addSubview(touchableButton)
+    }
+
+    @objc private func touchTouchableButton() {
+        print("touchTouchableButton")
     }
 
     @objc func hardWork() {
