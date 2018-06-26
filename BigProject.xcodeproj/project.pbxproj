@@ -30,6 +30,7 @@
 		50852E411DDF008C00F5EC7F /* SafeDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E401DDF008C00F5EC7F /* SafeDispatch.swift */; };
 		50852E431DDF030200F5EC7F /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */; };
 		50871AE02032A5500015B31E /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50871ADF2032A5500015B31E /* DeepLink.swift */; };
+		50DB2F0D20E21F4B00145B84 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB2F0C20E21F4B00145B84 /* Observable.swift */; };
 		50F6CEB2209AA39600DB0F5E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6CEB1209AA39600DB0F5E /* Keychain.swift */; };
 		50F6E27B20B435A800D9560B /* TouchableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6E27A20B435A800D9560B /* TouchableButton.swift */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,7 @@
 		50852E401DDF008C00F5EC7F /* SafeDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeDispatch.swift; sourceTree = "<group>"; };
 		50852E421DDF030200F5EC7F /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		50871ADF2032A5500015B31E /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		50DB2F0C20E21F4B00145B84 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		50F6CEB1209AA39600DB0F5E /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		50F6E27A20B435A800D9560B /* TouchableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchableButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 				5026BDF4205FBF0D00A946B7 /* Array+WorkerBee.swift */,
 				50F6CEB1209AA39600DB0F5E /* Keychain.swift */,
 				50F6E27A20B435A800D9560B /* TouchableButton.swift */,
+				50DB2F0C20E21F4B00145B84 /* Observable.swift */,
 				50852E201DDEF04400F5EC7F /* Info.plist */,
 			);
 			path = WorkerBee;
@@ -353,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50DB2F0D20E21F4B00145B84 /* Observable.swift in Sources */,
 				50852E411DDF008C00F5EC7F /* SafeDispatch.swift in Sources */,
 				50852E3B1DDEF06700F5EC7F /* CancelableTask.swift in Sources */,
 				5083BE411ED8234C00CAA21E /* TextSize.swift in Sources */,

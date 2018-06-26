@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         print("schedule work", Date().timeIntervalSince1970)
     }
 
+    let o: Observable<Int> = .init(value: 0)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -113,6 +115,13 @@ class ViewController: UIViewController {
         touchableButton.backgroundColor = .green
         touchableButton.addTarget(self, action: #selector(touchTouchableButton), for: .touchUpInside)
         view.addSubview(touchableButton)
+
+        o.addObserver(self) { [weak self] (observer, value) in
+            guard self == observer else { return }
+            print("value", value)
+        }
+        o.update(with: 1)
+        o.update(with: 2)
     }
 
     @objc private func touchTouchableButton() {
